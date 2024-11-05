@@ -1,0 +1,94 @@
+---
+const navItems = [
+  { name: 'Home', href: '/' },
+  {
+    name: 'Services',
+    href: '/services',
+    submenu: [
+      { name: 'Standard Sessions', href: '/services/standard-sessions' },
+      { name: 'Premium Sessions', href: '/services/premium-sessions' },
+      { name: 'Athletic Recovery', href: '/services/athletic-recovery' },
+      { name: 'Beauty & Anti-Aging', href: '/services/beauty-anti-aging' },
+    ],
+  },
+  {
+    name: 'Conditions',
+    href: '/conditions',
+    submenu: [
+      { name: 'Respiratory Conditions', href: '/conditions/respiratory' },
+      { name: 'Post-COVID Recovery', href: '/conditions/post-covid' },
+      { name: 'Chronic Pain', href: '/conditions/chronic-pain' },
+      { name: 'Neurological Conditions', href: '/conditions/neurological' },
+    ],
+  },
+  { name: 'About', href: '/about' },
+  { name: 'Locations', href: '/locations' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Resources', href: '/resources' },
+  { name: 'Booking', href: '/booking' },
+];
+---
+
+<nav class="container mx-auto relative">
+  <ul class="flex justify-center space-x-6">
+    {navItems.map((item) => (
+      <li class="relative group">
+        <a href={item.href} class="hover:text-primary py-2 px-3 inline-block">{item.name}</a>
+        {item.submenu && (
+          <ul class="submenu absolute left-0 hidden bg-white shadow-lg rounded-lg z-10">
+            {item.submenu.map((subitem) => (
+              <li>
+                <a href={subitem.href} class="block px-4 py-2 text-sm hover:bg-secondary hover:text-primary whitespace-nowrap">
+                  {subitem.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  function handleSubmenu() {
+    const menuItems = document.querySelectorAll('nav > ul > li');
+    
+    menuItems.forEach(item => {
+      const link = item.querySelector('a');
+      const submenu = item.querySelector('.submenu');
+      
+      if (submenu) {
+        // For desktop: show submenu on hover
+        item.addEventListener('mouseenter', () => {
+          submenu.classList.remove('hidden');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+          submenu.classList.add('hidden');
+        });
+        
+        // For mobile: toggle submenu on click
+        link.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            submenu.classList.toggle('hidden');
+          }
+        });
+      }
+    });
+  }
+
+  // Run the function when the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', handleSubmenu);
+
+  // Run the function again if the page is dynamically updated (for Astro)
+  document.addEventListener('astro:page-load', handleSubmenu);
+</script>
+
+<style>
+  /* Add any additional styles here if needed */
+  .submenu {
+    min-width: 200px;
+  }
+</style>

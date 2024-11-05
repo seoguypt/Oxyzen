@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from '@astrojs/image/components';
+
+const title = "Oxyzen London - Premier Hyperbaric Oxygen Therapy in London";
+const description = "Experience the benefits of hyperbaric oxygen therapy at Oxyzen London. Our state-of-the-art chambers provide professional oxygen treatment for various conditions and wellness needs.";
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-secondary py-20">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">Experience the Power of Hyperbaric Oxygen Therapy in London</h1>
+      <p class="text-xl mb-8">Discover enhanced healing, improved wellness, and optimal performance at Oxyzen London.</p>
+      <a href="/booking" class="bg-primary text-white py-2 px-6 rounded-full text-lg hover:bg-blue-700 transition duration-300">Book Your Session Now</a>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-semibold text-center mb-12">Our Featured Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-4">Standard Oxygen Therapy Sessions</h3>
+          <p class="mb-4">Experience our basic oxygen treatment for general wellness and recovery.</p>
+          <a href="/services#standard-sessions" class="text-primary hover:underline">Learn More</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-4">Athletic Recovery</h3>
+          <p class="mb-4">Enhance your performance and speed up recovery with our specialised sports oxygen therapy.</p>
+          <a href="/services#athletic-recovery" class="text-primary hover:underline">Learn More</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-4">Beauty & Anti-Aging</h3>
+          <p class="mb-4">Rejuvenate your skin and combat signs of aging with our oxygen facial therapy.</p>
+          <a href="/services#beauty-anti-aging" class="text-primary hover:underline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-100 py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-semibold text-center mb-12">What Our Clients Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <blockquote class="bg-white p-6 rounded-lg shadow-md">
+          <p class="mb-4">"Oxyzen London has transformed my recovery process. As a professional athlete, I've seen remarkable improvements in my performance and healing time."</p>
+          <cite class="font-semibold">- Sarah J., Olympic Swimmer</cite>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-lg shadow-md">
+          <p class="mb-4">"The anti-aging oxygen therapy at Oxyzen London has done wonders for my skin. I look and feel years younger!"</p>
+          <cite class="font-semibold">- Emma T., Beauty Influencer</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-semibold text-center mb-12">Latest from Our Blog</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image src="/images/blog-1.jpg" alt="Hyperbaric Oxygen Therapy Benefits" width={600} height={400} format="webp" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="/blog/benefits-of-hbot" class="hover:text-primary">The Top 10 Benefits of Hyperbaric Oxygen Therapy</a></h3>
+            <p>Discover how HBOT can improve your overall health and wellbeing...</p>
+          </div>
+        </article>
+        <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image src="/images/blog-2.jpg" alt="Oxygen Therapy for Athletes" width={600} height={400} format="webp" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="/blog/oxygen-therapy-for-athletes" class="hover:text-primary">Oxygen Therapy: The Secret Weapon of Top Athletes</a></h3>
+            <p>Learn how professional athletes are using oxygen therapy to gain a competitive edge...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>

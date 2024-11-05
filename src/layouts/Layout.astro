@@ -1,0 +1,107 @@
+---
+import { SEO } from 'astro-seo';
+import Navigation from '../components/Navigation.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "https://www.oxyzenlondon.co.uk/og-image.jpg",
+        }
+      }}
+      twitter={{
+        creator: "@oxyzenlondon"
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        meta: [
+          {
+            name: "twitter:image",
+            content: "https://www.oxyzenlondon.co.uk/twitter-image.jpg",
+          },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
+        ],
+      }}
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "Oxyzen London",
+        "url": "https://www.oxyzenlondon.co.uk",
+        "logo": "https://www.oxyzenlondon.co.uk/logo.png",
+        "description": "Premier hyperbaric oxygen therapy clinic in London",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Oxford Street",
+          "addressLocality": "London",
+          "postalCode": "W1D 2LG",
+          "addressCountry": "GB"
+        },
+        "telephone": "+44-20-1234-5678",
+        "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-18:00",
+        "sameAs": [
+          "https://www.facebook.com/oxyzenlondon",
+          "https://www.instagram.com/oxyzenlondon",
+          "https://twitter.com/oxyzenlondon"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-white text-gray-800">
+    <header class="bg-secondary py-4">
+      <Navigation />
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="/about" class="hover:text-primary">About Us</a></li>
+            <li><a href="/services" class="hover:text-primary">Our Services</a></li>
+            <li><a href="/booking" class="hover:text-primary">Book a Session</a></li>
+            <li><a href="/contact" class="hover:text-primary">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Contact Information</h4>
+          <p>123 Oxford Street, London, W1D 2LG</p>
+          <p>Phone: +44-20-1234-5678</p>
+          <p>Email: info@oxyzenlondon.co.uk</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/oxyzenlondon" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Facebook</a>
+            <a href="https://www.instagram.com/oxyzenlondon" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Instagram</a>
+            <a href="https://twitter.com/oxyzenlondon" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Twitter</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <p>&copy; 2023 Oxyzen London. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
